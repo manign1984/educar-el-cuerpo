@@ -4,10 +4,10 @@ window.SITE_CONTENT = {
     ["lectura", "Lectura"], ["archivo", "Archivo"], ["interpretacion", "Interpretación"], ["cierre", "Cierre"]
   ],
   argumentMap: [
-    ["Antecedentes", "Reconstruye organismos y proyectos previos para evitar pensar 1946 como un comienzo absoluto."],
-    ["Escala estatal", "Señala una ruptura en la masividad, la centralización y la voluntad de alcanzar todo el territorio."],
-    ["Dos experiencias", "Analiza los cuadernillos para el aula y la oficina como estrategias emparentadas, pero no idénticas."],
-    ["Prescripción y práctica", "La insistencia persuasiva de las fuentes se interpreta como indicio de resistencias y límites."]
+    ["Historizar", "Reconstruye organismos y proyectos anteriores para evitar presentar 1946 como un comienzo absoluto de la intervención estatal sobre la cultura física."],
+    ["Comparar proyectos", "Contrasta iniciativas ligadas al Ministerio de Guerra y a la Secretaría de Salud Pública para mostrar las disputas dentro de la coalición oficialista."],
+    ["Leer las fuentes", "Analiza los cuadernillos de 1949 y 1950 como documentos prescriptivos: allí aparecen destinatarios, métodos, promesas y formas de legitimación."],
+    ["Seguir la implementación", "Interpreta la necesidad de persuadir a docentes, empleados y empleadores como indicio de resistencias, negociaciones y límites concretos."]
   ],
   timeline: [
     ["1936–1938", "Continuidad", "Organismos que preceden al peronismo", "La creación de dependencias estatales dedicadas a la cultura física muestra que el interés por regular los cuerpos no comenzó en 1946."],
