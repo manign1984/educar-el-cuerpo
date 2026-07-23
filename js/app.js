@@ -176,6 +176,24 @@
     $('#downloadWriting').addEventListener('click',e=>{e.preventDefault();const blob=new Blob([writing.value||''],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='interpretacion-educar-el-cuerpo.txt';a.click();URL.revokeObjectURL(a.href);});
   }
 
+  const loadClosureModule = () => {
+    if (!document.querySelector('link[href="css/closure.css"]')) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'css/closure.css';
+      document.head.appendChild(link);
+    }
+    const dataScript = document.createElement('script');
+    dataScript.src = 'contenido/cierre.js';
+    dataScript.onload = () => {
+      const moduleScript = document.createElement('script');
+      moduleScript.src = 'js/closure.js';
+      document.body.appendChild(moduleScript);
+    };
+    document.body.appendChild(dataScript);
+  };
+  loadClosureModule();
+
   const sections=c.sections.map(([id])=>document.getElementById(id));
   const update=()=>{
     const y=scrollY+innerHeight*.28;
