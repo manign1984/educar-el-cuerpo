@@ -9,6 +9,8 @@
 <link href="css/hero.css" rel="stylesheet"/>
 <link href="css/navigation.css" rel="stylesheet"/>
 <link href="css/problem-author.css" rel="stylesheet"/>
+<link href="css/context.css" rel="stylesheet"/>
+<link href="css/context-timeline-fix.css" rel="stylesheet"/>
 </head>
 <body>
 <header class="topbar" id="topbar">
@@ -82,17 +84,40 @@
 <div class="author-note"><strong>Para leer al autor</strong><p>Este perfil no busca separar la biografía del texto. Sitúa la pregunta, el campo de investigación, los materiales utilizados y la operación historiográfica que organiza el artículo.</p></div>
 </section>
 
-<section class="section paper" data-title="Contexto" id="contexto">
-<header class="section-heading"><span>04</span><div><p class="kicker">Contexto selectivo</p><h2>Un Estado que busca ampliar su radio de acción</h2></div></header>
-<ol class="timeline" id="timeline"></ol>
-<div class="tension">
-<div><p class="kicker">Advertencia historiográfica</p><h3>El primer peronismo no fue un bloque homogéneo</h3></div>
-<div class="grid two">
-<article><strong>Vía militar</strong><p>Dependencia del Ministerio de Guerra, cultura física, preconscripción y organización nacional.</p></article>
-<article><strong>Vía médico-social</strong><p>Salud pública, medicina social, prevención y prolongación de la vida útil.</p></article>
+<section class="section" data-title="Contexto" id="contexto">
+<header class="section-heading"><span>04</span><div><p class="kicker">Contexto histórico selectivo</p><h2>Un país que cambia y un Estado que amplía su radio de acción</h2></div></header>
+<div class="context-opening">
+<article>
+<p class="mini-label">Situar sin desviar la lectura</p>
+<h3>El aula y la oficina pertenecen a una transformación más amplia</h3>
+<p>Las iniciativas estudiadas por Orbuch cobraron sentido en una Argentina industrializada y urbanizada, con nuevos trabajadores en el centro de la vida política y con políticas públicas que buscaban ampliar el acceso a la salud, la educación, la previsión y el bienestar. El contexto no explica automáticamente los cuadernillos: permite reconocer por qué el Estado quiso intervenir sobre cuerpos, hábitos y espacios cotidianos con una escala inédita.</p>
+</article>
+<blockquote class="context-question"><span>¿Qué transformaciones hicieron imaginable que la educación corporal atravesara todas las clases escolares y llegara también al lugar de trabajo?</span></blockquote>
+</div>
+<div class="context-stats" id="contextStats" aria-label="Indicadores del período"></div>
+<div class="context-lenses-heading"><p class="mini-label">Cuatro lentes para recorrer el período</p><h3>Elegí un eje para filtrar la cronología</h3></div>
+<div class="context-lenses" id="contextAxes"></div>
+<div class="timeline-zone">
+<header class="timeline-toolbar"><div><p class="mini-label">1930–1950</p><h3>Cronología interpretativa</h3></div><p class="timeline-filter-status" id="contextFilterStatus" aria-live="polite">8 hitos visibles · enfoque: todos los procesos.</p></header>
+<div class="context-filters" aria-label="Filtros de la cronología">
+<button type="button" data-context-filter="all" data-filter-label="Todos los procesos" aria-pressed="true">Todo</button>
+<button type="button" data-context-filter="transformacion" data-filter-label="Transformación social" aria-pressed="false">Sociedad</button>
+<button type="button" data-context-filter="bienestar" data-filter-label="Democratización del bienestar" aria-pressed="false">Bienestar</button>
+<button type="button" data-context-filter="estado" data-filter-label="Centralización estatal" aria-pressed="false">Estado</button>
+<button type="button" data-context-filter="cuerpo" data-filter-label="Educación corporal" aria-pressed="false">Cuerpo</button>
+</div>
+<ol class="context-timeline" id="timeline"></ol>
+</div>
+<div class="context-synthesis">
+<header><p class="mini-label">Brújula interpretativa</p><h3>Leer el período desde continuidades, rupturas y tensiones</h3></header>
+<div class="synthesis-grid">
+<article><span>01</span><h4>Continuidad</h4><p>La cultura física ya era objeto de organismos gubernamentales antes de 1946. El peronismo retomó instituciones, lenguajes y preocupaciones previas.</p></article>
+<article><span>02</span><h4>Ruptura de escala</h4><p>El nuevo Consejo buscó abarcar todo el territorio, movilizar recursos estatales y llegar a una población concebida como conjunto nacional.</p></article>
+<article><span>03</span><h4>Tensión</h4><p>La ampliación de la ambición estatal no garantizó la aplicación: docentes, empleadores, condiciones materiales y espacios privados impusieron límites.</p></article>
 </div>
 </div>
 </section>
+
 <section class="section paper" data-title="Lectura" id="lectura">
 <header class="section-heading"><span>05</span><div><p class="kicker">Lectura orientada</p><h2>Texto, conceptos y preguntas de control</h2></div></header>
 <div class="grid two">
@@ -127,6 +152,7 @@
 </main>
 <script src="contenido/contenidos.js"></script>
 <script src="js/app.js"></script>
+<script src="js/context.js"></script>
 <script src="js/navigation.js"></script>
 </body>
 </html>
