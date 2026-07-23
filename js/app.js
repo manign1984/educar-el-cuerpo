@@ -149,6 +149,24 @@
     });
   }
 
+  const loadInterpretationModule = () => {
+    if (!document.querySelector('link[href="css/interpretation.css"]')) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'css/interpretation.css';
+      document.head.appendChild(link);
+    }
+    const dataScript = document.createElement('script');
+    dataScript.src = 'contenido/interpretacion.js';
+    dataScript.onload = () => {
+      const moduleScript = document.createElement('script');
+      moduleScript.src = 'js/interpretation.js';
+      document.body.appendChild(moduleScript);
+    };
+    document.body.appendChild(dataScript);
+  };
+  loadInterpretationModule();
+
   const writing=$('#finalWriting');
   if (writing) {
     const key='educar-el-cuerpo-borrador';
