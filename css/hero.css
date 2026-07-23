@@ -5,7 +5,7 @@
   color:#fff;
   background:
     linear-gradient(90deg,rgba(7,27,53,.16) 0%,rgba(7,27,53,.06) 46%,rgba(7,27,53,0) 68%),
-    url("../assets/hero-mural-desktop.svg") center top/cover no-repeat,
+    url("https://educar-el-cuerpo.man-ign.chatgpt.site/visual/hero-mural-desktop.webp") center top/cover no-repeat,
     var(--navy);
   padding:clamp(42px,5.5vh,62px) max(22px,calc((100vw - 1500px)/2)) 78px;
   align-items:initial;
@@ -127,7 +127,7 @@
     position:absolute;
     inset:0 0 auto;
     height:56.25vw;
-    background:url("../assets/hero-mural-desktop.svg") center center/cover no-repeat,var(--navy);
+    background:url("https://educar-el-cuerpo.man-ign.chatgpt.site/visual/hero-mural-mobile.webp") center center/cover no-repeat,var(--navy);
     border-bottom:4px solid var(--gold);
   }
   .hero:after{
