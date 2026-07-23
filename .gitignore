@@ -1,0 +1,29 @@
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editores
+.vscode/
+.idea/
+
+# Archivos temporales y copias locales
+*.tmp
+*.temp
+*.bak
+*.swp
+~$*
+
+# Paquetes comprimidos de trabajo
+*.zip
+*.rar
+*.7z
+
+# Dependencias futuras
+node_modules/
+
+# Variables y credenciales locales
+.env
+.env.*
+!.env.example
+.clasprc.json
