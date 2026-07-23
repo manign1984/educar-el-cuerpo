@@ -72,6 +72,22 @@
     sections.forEach(section => section && observer.observe(section));
   }
 
+  const voiceChapter = document.getElementById('voiceChapter');
+  if (voiceChapter) {
+    const enableVoiceSelector = () => {
+      if (voiceChapter.options.length > 1) voiceChapter.disabled = false;
+    };
+    new MutationObserver(enableVoiceSelector).observe(voiceChapter, {childList: true});
+    enableVoiceSelector();
+  }
+
+  const pdfFrame = document.getElementById('articlePdf');
+  document.querySelector('[data-reading-tab="pdf"]')?.addEventListener('click', () => {
+    if (pdfFrame && !pdfFrame.getAttribute('src')) {
+      pdfFrame.setAttribute('src', pdfFrame.dataset.src || '');
+    }
+  });
+
   addEventListener('scroll', requestCalculation, { passive: true });
   addEventListener('resize', requestCalculation, { passive: true });
   addEventListener('hashchange', requestCalculation);
