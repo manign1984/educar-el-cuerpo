@@ -108,6 +108,24 @@
     });
   }
 
+  const loadConceptChecksModule = () => {
+    if (!document.querySelector('link[href="css/concept-checks.css"]')) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'css/concept-checks.css';
+      document.head.appendChild(link);
+    }
+    const dataScript = document.createElement('script');
+    dataScript.src = 'contenido/comprobaciones.js';
+    dataScript.onload = () => {
+      const moduleScript = document.createElement('script');
+      moduleScript.src = 'js/concept-checks.js';
+      document.body.appendChild(moduleScript);
+    };
+    document.body.appendChild(dataScript);
+  };
+  loadConceptChecksModule();
+
   const labels = {prescripcion:'Prescripción',implementacion:'Implementación',tension:'Tensión o límite',alcance:'Escala y alcance',legitimacion:'Justificación o legitimación'};
   const list = $('#evidenceActivity');
   if (list) {
