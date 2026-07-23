@@ -1,0 +1,128 @@
+/* === ETAPA 2 · NAVEGACIÓN, PROGRESO Y ORIENTACIÓN === */
+:root{--header-height:78px}
+html{scroll-padding-top:calc(var(--header-height) + 1px)}
+body{padding-top:var(--header-height)}
+.topbar{
+  position:fixed;
+  inset:0 0 auto 0;
+  z-index:1000;
+  height:var(--header-height);
+  display:grid;
+  grid-template-columns:minmax(135px,auto) minmax(110px,1fr) auto;
+  align-items:center;
+  gap:26px;
+  padding:0 clamp(24px,3.6vw,58px);
+  background:rgba(9,47,70,.985);
+  border-bottom:4px solid var(--gold);
+  color:#fff;
+  box-shadow:0 4px 16px rgba(2,17,30,.2);
+  transform:translateZ(0);
+}
+.progress-copy{
+  min-width:130px;
+  display:flex;
+  align-items:baseline;
+  gap:12px;
+  white-space:nowrap;
+  text-transform:uppercase;
+  letter-spacing:.075em;
+  font:800 .68rem/1 "Arial Narrow",Arial,sans-serif;
+}
+.progress-copy span{color:#fff;opacity:.96;font-variant-numeric:tabular-nums}
+.progress-copy strong{
+  color:var(--gold);
+  font-size:.76rem;
+  letter-spacing:.045em;
+  transition:opacity .18s ease,color .18s ease;
+}
+.progress-track{
+  position:relative;
+  height:2px;
+  min-width:90px;
+  overflow:visible;
+  background:rgba(255,255,255,.28);
+}
+.progress-track span{
+  position:absolute;
+  inset:0 auto 0 0;
+  width:12.5%;
+  height:100%;
+  background:var(--gold);
+  box-shadow:0 0 8px rgba(243,197,82,.28);
+  transition:width .3s cubic-bezier(.2,.8,.2,1);
+}
+#mainNav{
+  min-width:0;
+  display:flex;
+  align-items:stretch;
+  justify-content:flex-end;
+  gap:clamp(1px,.42vw,7px);
+  overflow-x:auto;
+  scrollbar-width:none;
+  overscroll-behavior-inline:contain;
+}
+#mainNav::-webkit-scrollbar{display:none}
+#mainNav button{
+  position:relative;
+  flex:0 0 auto;
+  min-height:52px;
+  padding:15px clamp(5px,.62vw,10px) 13px;
+  border:0;
+  border-bottom:3px solid transparent;
+  background:transparent;
+  color:#dce4df;
+  opacity:.56;
+  text-transform:uppercase;
+  letter-spacing:.018em;
+  font:900 clamp(.6rem,.64vw,.69rem)/1 "Arial Narrow",Arial,sans-serif;
+  cursor:pointer;
+  transition:opacity .2s ease,color .2s ease,border-color .2s ease,transform .2s ease,font-size .2s ease;
+}
+#mainNav button:hover,
+#mainNav button:focus-visible{color:#fff;opacity:.88;outline:none}
+#mainNav button:focus-visible{box-shadow:inset 0 0 0 2px rgba(243,197,82,.72)}
+#mainNav button.active{
+  color:#fff6dc;
+  opacity:1;
+  border-bottom-color:var(--gold);
+  font-size:clamp(.68rem,.71vw,.77rem);
+  transform:translateY(-1px);
+}
+#mainNav button.active::after{
+  content:"";
+  position:absolute;
+  left:25%;
+  right:25%;
+  bottom:-3px;
+  height:3px;
+  background:var(--gold);
+}
+.section{scroll-margin-top:var(--header-height)}
+
+@media(max-width:1180px){
+  .topbar{grid-template-columns:132px minmax(70px,1fr) auto;gap:16px;padding-inline:24px}
+  #mainNav{gap:0}
+  #mainNav button{padding-inline:6px;font-size:.59rem}
+  #mainNav button.active{font-size:.67rem}
+}
+@media(max-width:980px){
+  :root{--header-height:64px}
+  .topbar{
+    grid-template-columns:auto minmax(80px,1fr);
+    gap:18px;
+    padding:0 16px;
+    border-bottom-width:3px;
+  }
+  .progress-copy{min-width:0;gap:10px;font-size:.65rem}
+  .progress-copy strong{font-size:.74rem;max-width:48vw;overflow:hidden;text-overflow:ellipsis}
+  .progress-track{height:2px}
+  #mainNav{display:none}
+}
+@media(max-width:430px){
+  .topbar{gap:12px;padding-inline:13px}
+  .progress-copy{gap:8px;font-size:.59rem}
+  .progress-copy strong{font-size:.68rem;max-width:43vw}
+}
+@media(prefers-reduced-motion:reduce){
+  .progress-track span,#mainNav button{transition:none}
+}
