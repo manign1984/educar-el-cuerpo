@@ -53,6 +53,24 @@
     dossiers.innerHTML = c.dossiers.map(d=>`<article class="dossier"><div class="cover"><small>Consejo Nacional de Educación Física</small><strong>${d.title}</strong><span>${d.year}</span></div><p class="tag">${d.label}</p><h3>${d.title}</h3><p>${d.summary}</p><p><b>Tirada informada:</b> ${d.print}</p><a class="button" target="_blank" rel="noreferrer" href="${d.url}">Abrir fuente digitalizada</a></article>`).join('');
   }
 
+  const loadArchiveModule = () => {
+    if (!document.querySelector('link[href="css/archive.css"]')) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'css/archive.css';
+      document.head.appendChild(link);
+    }
+    const dataScript = document.createElement('script');
+    dataScript.src = 'contenido/archivo.js';
+    dataScript.onload = () => {
+      const archiveScript = document.createElement('script');
+      archiveScript.src = 'js/archive.js';
+      document.body.appendChild(archiveScript);
+    };
+    document.body.appendChild(dataScript);
+  };
+  loadArchiveModule();
+
   const quiz = $('#quiz');
   if (quiz) {
     quiz.innerHTML = `<h3>Primera comprobación</h3>${c.quiz.map((q,qi)=>`<fieldset data-q="${qi}"><legend>${q.q}</legend>${q.options.map((o,oi)=>`<label><input type="radio" name="q${qi}" value="${oi}"> ${o}</label>`).join('')}<div class="feedback" aria-live="polite"></div></fieldset>`).join('')}<div class="quiz-actions"><button type="submit">Comprobar respuestas</button><button class="secondary" id="resetQuiz" type="button">Volver a intentar</button></div><p class="quiz-total" id="quizTotal" aria-live="polite"></p>`;
