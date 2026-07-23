@@ -1,6 +1,6 @@
 (() => {
   const filters = [...document.querySelectorAll('[data-context-filter]')];
-  const events = [...document.querySelectorAll('#timeline li')];
+  const events = [...document.querySelectorAll('#timeline > li')];
   const status = document.getElementById('contextFilterStatus');
 
   const setFilter = (filter) => {
