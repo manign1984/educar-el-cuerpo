@@ -1,0 +1,12 @@
+/* Las viñetas internas no deben heredar la grilla de los hitos principales. */
+.context-event ul li{
+  position:static;
+  display:list-item;
+  grid-template-columns:none;
+  gap:normal;
+  padding:0;
+  opacity:1;
+  transform:none;
+  transition:none;
+}
+.context-event ul li[hidden]{display:list-item}
