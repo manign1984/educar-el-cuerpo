@@ -15,7 +15,6 @@
 
   let chapters = [];
   let currentUtterance = null;
-  let activeChapterId = null;
 
   const escapeHtml = (value = '') => value
     .replaceAll('&', '&amp;')
@@ -23,11 +22,84 @@
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;');
 
+  const injectAudiobookStyles = () => {
+    if (document.getElementById('audiobook-inline-styles')) return;
+    const style = document.createElement('style');
+    style.id = 'audiobook-inline-styles';
+    style.textContent = `
+      .audiobook-player{margin:0 0 20px;padding:16px;background:#fffaf0;color:#071b35;border:2px solid #f3c552;box-shadow:4px 4px 0 rgba(211,63,43,.9)}
+      .audiobook-player .mini-label{margin-bottom:7px;color:#d33f2b}
+      .audiobook-player h4{margin:0 0 7px;font:900 1.15rem/1.15 Georgia,serif}
+      .audiobook-player p{margin:0 0 13px;font-size:.78rem;line-height:1.45}
+      .audiobook-frame{display:block;width:100%;height:112px;border:0;background:#111;margin:0 0 12px}
+      .audiobook-meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:center}
+      .audiobook-meta small{font-size:.67rem;color:#4d626d}
+      .audiobook-open{display:inline-block;padding:9px 11px;background:#071b35;color:#fff4c8;text-decoration:none;text-transform:uppercase;letter-spacing:.05em;font:900 .62rem/1 "Arial Narrow",Arial,sans-serif}
+      .voice-fallback{border-top:1px solid rgba(255,255,255,.3);padding-top:15px}
+      .voice-fallback summary{cursor:pointer;color:#f3c552;text-transform:uppercase;letter-spacing:.055em;font:900 .66rem/1.3 "Arial Narrow",Arial,sans-serif}
+      .voice-fallback[open] summary{margin-bottom:16px}
+      .voice-fallback-body{padding-top:1px}
+      .audio-migration-note{margin-top:16px!important}
+      @media(max-width:520px){.audiobook-frame{height:128px}.audiobook-meta{display:block}.audiobook-open{margin-top:9px}}
+    `;
+    document.head.appendChild(style);
+  };
+
+  const formatBytes = (bytes) => {
+    if (!Number.isFinite(bytes)) return '';
+    return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
+  };
+
+  const installAudiobook = (config) => {
+    const listeningConsole = document.querySelector('.listening-console');
+    const listeningHeader = document.querySelector('.listening-header');
+    const listeningBody = document.querySelector('.listening-body');
+    const contractText = document.querySelector('.reading-contract > p:not(.mini-label)');
+    if (!listeningConsole || !listeningHeader || !listeningBody || !config?.previewUrl) return;
+
+    injectAudiobookStyles();
+    listeningConsole.setAttribute('aria-label', 'Audiolibro y escucha asistida');
+    const headerLabel = listeningHeader.querySelector('.mini-label');
+    const headerTitle = listeningHeader.querySelector('h3');
+    const headerText = listeningHeader.querySelector('p');
+    if (headerLabel) headerLabel.textContent = 'Audiolibro';
+    if (headerTitle) headerTitle.textContent = 'Escuchar el texto completo';
+    if (headerText) headerText.textContent = 'La reproducción continúa mientras consultás la síntesis o el artículo en PDF.';
+    if (contractText) contractText.textContent = 'Podés recorrer la síntesis accesible, consultar el artículo académico en PDF y reproducir el audiolibro completo. Texto y sonido funcionan juntos o de manera independiente.';
+
+    const originalNodes = [...listeningBody.children];
+    const fallbackDetails = document.createElement('details');
+    fallbackDetails.className = 'voice-fallback';
+    const fallbackSummary = document.createElement('summary');
+    fallbackSummary.textContent = 'Lectura automática de respaldo';
+    const fallbackBody = document.createElement('div');
+    fallbackBody.className = 'voice-fallback-body';
+    originalNodes.forEach(node => fallbackBody.appendChild(node));
+    const migrationNote = fallbackBody.querySelector('.audio-migration-note');
+    if (migrationNote) migrationNote.innerHTML = '<strong>Alternativa accesible:</strong> esta voz automática permite elegir capítulos y velocidad cuando no se desea utilizar el audiolibro grabado.';
+    fallbackDetails.append(fallbackSummary, fallbackBody);
+
+    const player = document.createElement('section');
+    player.className = 'audiobook-player';
+    player.innerHTML = `
+      <p class="mini-label">Versión grabada · MP3</p>
+      <h4>${escapeHtml(config.title || 'Audiolibro')}</h4>
+      <p>Reproducción alojada en ${escapeHtml(config.host || 'Google Drive')}. Usá el control del reproductor para iniciar, pausar y desplazarte por el audio.</p>
+      <iframe class="audiobook-frame" src="${escapeHtml(config.previewUrl)}" title="Audiolibro: ${escapeHtml(config.title || '')}" loading="lazy" allow="autoplay"></iframe>
+      <div class="audiobook-meta">
+        <small>${escapeHtml(config.mimeType || 'audio/mpeg')} · ${formatBytes(Number(config.sizeBytes))}</small>
+        <a class="audiobook-open" href="${escapeHtml(config.openUrl)}" target="_blank" rel="noreferrer">Abrir audiolibro aparte</a>
+      </div>
+    `;
+
+    listeningBody.replaceChildren(player, fallbackDetails);
+  };
+
   const parseAccessibleText = (raw) => {
     const lines = raw.replace(/\r/g, '').split('\n');
     const parsed = [];
     let current = null;
-    let intro = [];
+    const intro = [];
 
     for (const line of lines) {
       const clean = line.trim();
@@ -127,7 +199,6 @@
 
   const clearSpeakingHighlight = () => {
     document.querySelectorAll('.reading-chapter.is-speaking').forEach(el => el.classList.remove('is-speaking'));
-    activeChapterId = null;
   };
 
   const highlightSelectedChapter = () => {
@@ -135,7 +206,6 @@
     if (chapterSelect.value === 'all') return;
     const chapter = document.getElementById(chapterSelect.value);
     if (chapter) {
-      activeChapterId = chapter.id;
       chapter.classList.add('is-speaking');
       chapter.scrollIntoView({behavior: 'smooth', block: 'start'});
     }
@@ -150,7 +220,7 @@
 
   const speak = () => {
     if (!('speechSynthesis' in window)) {
-      status.textContent = 'Este navegador no ofrece lectura por voz. El texto y el PDF siguen disponibles.';
+      status.textContent = 'Este navegador no ofrece lectura por voz. El texto, el PDF y el audiolibro siguen disponibles.';
       return;
     }
 
@@ -183,7 +253,7 @@
     currentUtterance.onstart = () => {
       playButton.textContent = 'Pausar';
       status.textContent = chapterSelect.value === 'all'
-        ? 'Reproduciendo la síntesis completa. Podés abrir el PDF sin interrumpir la voz.'
+        ? 'Reproduciendo la síntesis completa mediante la voz automática.'
         : `Reproduciendo: ${chapterSelect.options[chapterSelect.selectedIndex].text}.`;
     };
     currentUtterance.onend = () => {
@@ -194,7 +264,7 @@
     };
     currentUtterance.onerror = () => {
       playButton.textContent = 'Escuchar';
-      status.textContent = 'La lectura por voz se interrumpió. Podés volver a iniciarla.';
+      status.textContent = 'La lectura automática se interrumpió. Podés volver a iniciarla.';
       clearSpeakingHighlight();
       currentUtterance = null;
     };
@@ -206,7 +276,7 @@
     if ('speechSynthesis' in window) speechSynthesis.cancel();
     currentUtterance = null;
     playButton.textContent = 'Escuchar';
-    status.textContent = 'Lectura detenida.';
+    status.textContent = 'Lectura automática detenida.';
     clearSpeakingHighlight();
   };
 
@@ -234,6 +304,17 @@
   stopButton.addEventListener('click', stop);
   window.addEventListener('beforeunload', stop);
 
+  fetch('contenido/audiolibro.json')
+    .then(response => {
+      if (!response.ok) throw new Error('No se pudo cargar la configuración del audiolibro.');
+      return response.json();
+    })
+    .then(installAudiobook)
+    .catch(() => {
+      const migrationNote = document.querySelector('.audio-migration-note');
+      if (migrationNote) migrationNote.textContent = 'El audiolibro no pudo cargarse en esta sesión. La lectura automática continúa disponible.';
+    });
+
   fetch(c.reading.textUrl)
     .then(response => {
       if (!response.ok) throw new Error('No se pudo cargar el texto accesible.');
@@ -242,7 +323,7 @@
     .then(raw => renderText(parseAccessibleText(raw)))
     .catch(() => {
       textContainer.innerHTML = '<p class="reading-loading">No fue posible cargar la síntesis en esta sesión. Podés abrirla mediante el enlace superior.</p>';
-      status.textContent = 'La lectura por voz no está disponible porque el texto no pudo cargarse.';
+      status.textContent = 'La lectura automática no está disponible porque el texto no pudo cargarse.';
     });
 
   if ('speechSynthesis' in window) speechSynthesis.getVoices();
