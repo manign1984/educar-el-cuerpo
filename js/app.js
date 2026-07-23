@@ -10,7 +10,24 @@
   $$('[data-go]').forEach(el => el.addEventListener('click', () => document.getElementById(el.dataset.go)?.scrollIntoView({behavior:'smooth'})));
 
   $('#argumentMap').innerHTML = c.argumentMap.map((x,i)=>`<article><span>0${i+1}</span><h3>${x[0]}</h3><p>${x[1]}</p></article>`).join('');
-  $('#timeline').innerHTML = c.timeline.map(x=>`<li><div class="date"><strong>${x[0]}</strong><small>${x[1]}</small></div><div><h3>${x[2]}</h3><p>${x[3]}</p></div></li>`).join('');
+
+  const contextAxes = $('#contextAxes');
+  if (contextAxes) {
+    contextAxes.innerHTML = c.contextAxes.map(axis=>`<button class="context-lens" type="button" data-context-filter="${axis.id}" data-filter-label="${axis.title}" aria-pressed="false"><span>${axis.number}</span><h4>${axis.title}</h4><p>${axis.text}</p></button>`).join('');
+  }
+  const contextStats = $('#contextStats');
+  if (contextStats) {
+    contextStats.innerHTML = c.contextStats.map(stat=>`<article class="context-stat"><strong>${stat.value}</strong><p>${stat.label}</p><small>Fuente: ${stat.source}</small></article>`).join('');
+  }
+  const timeline = $('#timeline');
+  if (timeline) {
+    timeline.innerHTML = c.timeline.map((item)=>{
+      const points = item.points?.length ? `<ul>${item.points.map(point=>`<li>${point}</li>`).join('')}</ul>` : '';
+      const tags = item.axes.map(axis=>`<span>${c.contextAxes.find(entry=>entry.id===axis)?.title || axis}</span>`).join('');
+      return `<li data-axes="${item.axes.join(' ')}"><div class="context-date"><strong>${item.date}</strong><small>${item.label}</small></div><div class="context-marker" aria-hidden="true"></div><article class="context-event"><div class="context-event-tags">${tags}</div><h4>${item.title}</h4><p>${item.text}</p>${points}<p class="context-why"><strong>¿Qué ayuda a comprender?</strong>${item.why}</p></article></li>`;
+    }).join('');
+  }
+
   $('#concepts').innerHTML = `<h3>Herramientas conceptuales</h3>${c.concepts.map((x,i)=>`<details><summary><span>0${i+1}</span>${x[0]}</summary><p>${x[1]}</p></details>`).join('')}`;
   $('#dossiers').innerHTML = c.dossiers.map(d=>`<article class="dossier"><div class="cover"><small>Consejo Nacional de Educación Física</small><strong>${d.title}</strong><span>${d.year}</span></div><p class="tag">${d.label}</p><h3>${d.title}</h3><p>${d.summary}</p><p><b>Tirada informada:</b> ${d.print}</p><a class="button" target="_blank" rel="noreferrer" href="${d.url}">Abrir fuente digitalizada</a></article>`).join('');
 
