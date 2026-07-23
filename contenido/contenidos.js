@@ -3,6 +3,12 @@ window.SITE_CONTENT = {
     ["inicio", "Inicio"], ["problema", "Problema"], ["autor", "Autor"], ["contexto", "Contexto"],
     ["lectura", "Lectura"], ["archivo", "Archivo"], ["interpretacion", "Interpretación"], ["cierre", "Cierre"]
   ],
+  reading: {
+    textUrl: "contenido/orbuch-texto-accesible.txt",
+    pdfUrl: "https://drive.google.com/file/d/1FBuKyLb0YK23Mbw_kfwkNGCJTb4PouYV/preview",
+    pdfOpenUrl: "https://drive.google.com/file/d/1FBuKyLb0YK23Mbw_kfwkNGCJTb4PouYV/view",
+    audioUrl: ""
+  },
   argumentMap: [
     ["Historizar", "Reconstruye organismos y proyectos anteriores para evitar presentar 1946 como un comienzo absoluto de la intervención estatal sobre la cultura física."],
     ["Comparar proyectos", "Contrasta iniciativas ligadas al Ministerio de Guerra y a la Secretaría de Salud Pública para mostrar las disputas dentro de la coalición oficialista."],
@@ -82,14 +88,60 @@ window.SITE_CONTENT = {
     }
   ],
   concepts: [
-    ["Educación integral", "Concepción que rechaza separar la formación física, intelectual y moral. En el texto permite presentar la gimnasia como parte de la misión de todo educador."],
-    ["Biopolítica", "Intervención estatal sobre la vida, la salud, los hábitos y las capacidades de la población."],
-    ["Normalización", "Producción de hábitos y conductas considerados correctos, saludables, disciplinados y productivos."],
-    ["Prescripción / implementación", "Diferencia entre lo que una política ordena o recomienda y lo que efectivamente ocurre en instituciones y prácticas."]
+    {
+      title:"Educación integral",
+      definition:"Concepción que rechaza separar la formación física, intelectual y moral. En el artículo permite presentar la educación corporal como parte de la misión general de la escuela y del educador.",
+      clue:"Aparece cuando el texto discute la oposición entre cuerpo y mente o amplía las responsabilidades del maestro de grado.",
+      contrast:"No equivale a sumar una asignatura aislada: supone articular dimensiones de la formación humana.",
+      example:"Los ejercicios breves dentro de otras clases se justifican como apoyo a la atención, la postura, la disciplina y el aprendizaje."
+    },
+    {
+      title:"Biopolítica",
+      definition:"Clave utilizada para interpretar intervenciones estatales sobre la vida, la salud, los hábitos y las capacidades de la población.",
+      clue:"Se reconoce en políticas que pretenden preservar la vida útil, prevenir enfermedades o gestionar centralizadamente prácticas sociales.",
+      contrast:"No se reduce a una orden represiva: incluye saberes, instituciones, cuidados, mediciones y formas de legitimación.",
+      example:"La gimnasia de oficinas vincula salud del trabajador, productividad y disminución del ausentismo."
+    },
+    {
+      title:"Normalización",
+      definition:"Producción de hábitos, posturas y conductas consideradas correctas, saludables, disciplinadas y productivas.",
+      clue:"El texto la señala cuando los ejercicios procuran automatizar una postura, regular la atención o homogeneizar prácticas.",
+      contrast:"No es solamente sanción disciplinaria; busca que ciertas conductas se vuelvan habituales y se autorregulen.",
+      example:"La gimnasia compensatoria prometía evitar reconvenciones verbales y actuar positivamente sobre la conducta escolar."
+    },
+    {
+      title:"Prescripción e implementación",
+      definition:"Distinción entre lo que una política propone, ordena o recomienda y lo que efectivamente ocurre en instituciones y prácticas.",
+      clue:"Se vuelve visible cuando los documentos explican insistentemente ventajas, responden a objeciones o solicitan adhesión.",
+      contrast:"Una fuente normativa demuestra una intención estatal, pero no prueba por sí sola una aplicación completa y uniforme.",
+      example:"La necesidad de convencer a docentes y empresarios funciona como indicio de resistencias y límites."
+    }
   ],
   quiz: [
-    {q:"¿Qué distingue al Consejo creado en 1947 según Orbuch?", options:["La inexistencia de antecedentes","La escala nacional y masiva de sus políticas","La eliminación de toda influencia militar"], correct:1, feedback:"La novedad no radica en una creación desde cero, sino en la escala, la centralización y el alcance poblacional."},
-    {q:"¿Por qué la insistencia persuasiva de los cuadernillos es históricamente significativa?", options:["Porque prueba una aplicación uniforme","Porque permite inferir resistencias y necesidad de adhesión","Porque reemplaza toda evidencia institucional"], correct:1, feedback:"La necesidad de convencer docentes, empleados y empleadores funciona como indicio de límites y negociaciones."}
+    {
+      q:"¿Qué distingue al Consejo Nacional de Educación Física creado en 1947 según Orbuch?",
+      options:["La inexistencia de antecedentes estatales","La escala nacional y masiva de sus políticas","La eliminación de toda influencia militar"],
+      correct:1,
+      feedback:"La novedad no radica en una creación desde cero, sino en la escala, la centralización y la voluntad de alcanzar a toda la población."
+    },
+    {
+      q:"¿Qué operación histórica permite realizar la insistencia persuasiva de los cuadernillos?",
+      options:["Probar una aplicación uniforme","Inferir resistencias y necesidad de adhesión","Reemplazar toda evidencia sobre las instituciones"],
+      correct:1,
+      feedback:"La necesidad de explicar beneficios y convencer a quienes debían implementar las propuestas funciona como indicio de tensiones."
+    },
+    {
+      q:"¿Qué relación comparten las experiencias del aula y de la oficina?",
+      options:["Ambas fueron dirigidas exclusivamente por profesores de Educación Física","Ambas articularon ejercicios breves con salud, hábitos y finalidades institucionales","Ambas se aplicaron solamente dentro de organismos estatales"],
+      correct:1,
+      feedback:"Los dos cuadernillos extendieron ejercicios breves a espacios cotidianos y los vincularon con salud, atención, disciplina y objetivos institucionales."
+    },
+    {
+      q:"¿Por qué la gimnasia de oficinas implicaba una dificultad adicional para el Estado?",
+      options:["Porque debía ingresar y negociar dentro de empresas privadas","Porque estaba prohibida por la Constitución de 1949","Porque no vinculaba salud y productividad"],
+      correct:0,
+      feedback:"A diferencia de la escuela, la oficina pertenecía con frecuencia al ámbito privado y exigía adhesión de empleadores y trabajadores."
+    }
   ],
   dossiers: [
     {year:"1949", title:"Gimnasia compensatoria en el aula", label:"Escuela primaria", summary:"Ejercicios breves, diarios y realizados en medio de las clases para contrarrestar la inmovilidad, ordenar la atención y formar hábitos posturales.", print:"10.000 ejemplares", url:"https://educar-el-cuerpo.man-ign.chatgpt.site/archivo/gimnasia-compensatoria-1949.pdf"},
