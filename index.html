@@ -1,131 +1,96 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Recorrido documental e interactivo sobre educación corporal durante el primer peronismo, basado en el trabajo de Iván Orbuch.">
-  <title>Educar el cuerpo dentro y fuera del aula</title>
-  <link rel="stylesheet" href="css/styles.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Recorrido documental e interactivo sobre educación corporal durante el primer peronismo, basado en el trabajo de Iván Orbuch." name="description"/>
+<title>Educar el cuerpo dentro y fuera del aula</title>
+<link href="css/styles.css" rel="stylesheet"/>
+<link href="css/hero.css" rel="stylesheet"/>
 </head>
 <body>
-  <header class="topbar" id="topbar">
-    <div class="progress-copy"><span id="sectionCount">01 / 08</span><strong id="sectionName">Inicio</strong></div>
-    <div class="progress-track" aria-label="Progreso del recorrido"><span id="progressBar"></span></div>
-    <nav id="mainNav" aria-label="Secciones"></nav>
-  </header>
-
-  <main id="app">
-    <section id="inicio" class="section hero" data-title="Inicio">
-      <div class="hero-copy">
-        <p class="strap">Recorrido documental e interactivo</p>
-        <p class="period">Argentina · 1946–1950</p>
-        <h1><span>Educar el cuerpo</span><span>dentro y fuera</span><span>del aula</span></h1>
-        <p class="subtitle">Análisis de dos experiencias en la Nueva Argentina de Perón</p>
-        <blockquote>¿Cómo intentó el Estado extender la educación corporal desde la escuela hacia otros espacios cotidianos?</blockquote>
-        <p>Un recorrido para reconstruir cómo una política estatal de educación corporal atravesó el aula y la oficina, y qué tensiones aparecieron al intentar llevarla a la práctica.</p>
-        <button class="button primary" data-go="problema">Comenzar el recorrido</button>
-        <div class="meta"><span>70 min</span><span>Lectura individual o grupal</span><span>Sin registro</span></div>
-      </div>
-
-      <div class="hero-art" aria-label="Mural alegórico de educación, Estado y movimiento corporal">
-        <svg viewBox="0 0 720 720" role="img" aria-labelledby="muralTitle muralDesc">
-          <title id="muralTitle">Amanecer alegórico</title>
-          <desc id="muralDesc">Un libro abierto, una escarapela, rayos de sol y figuras humanas en movimiento.</desc>
-          <defs>
-            <radialGradient id="sky" cx="50%" cy="58%" r="70%"><stop offset="0" stop-color="#3f8db8"/><stop offset="1" stop-color="#071b35"/></radialGradient>
-            <linearGradient id="paper" x1="0" x2="1"><stop stop-color="#f7e7bd"/><stop offset=".5" stop-color="#fff6dc"/><stop offset="1" stop-color="#e9cf91"/></linearGradient>
-          </defs>
-          <rect width="720" height="720" fill="url(#sky)"/>
-          <g opacity=".35" stroke="#f7d36b" stroke-width="12">
-            <path d="M360 350L30 40M360 350L170 0M360 350L360 0M360 350L550 0M360 350L690 40"/>
-          </g>
-          <circle cx="360" cy="330" r="170" fill="#fff4ce" opacity=".96"/>
-          <circle cx="360" cy="330" r="134" fill="none" stroke="#7ec0df" stroke-width="44"/>
-          <circle cx="360" cy="330" r="80" fill="#fff4ce"/>
-          <g fill="url(#paper)" stroke="#5d4127" stroke-width="8">
-            <path d="M65 510Q215 450 360 535V690Q215 610 65 660Z"/>
-            <path d="M655 510Q505 450 360 535V690Q505 610 655 660Z"/>
-          </g>
-          <g stroke="#173d56" stroke-width="7" fill="none" stroke-linecap="round">
-            <path d="M165 565q35-65 70 0t70 0"/><path d="M415 565q35-65 70 0t70 0"/>
-            <circle cx="220" cy="555" r="12" fill="#173d56"/><circle cx="500" cy="555" r="12" fill="#173d56"/>
-          </g>
-          <g fill="#f3efe3" stroke="#173d56" stroke-width="6">
-            <circle cx="135" cy="430" r="20"/><path d="M135 450l-18 78m18-78l42 40m-42-40l-48 33m30 45l-38 58m38-58l42 52"/>
-            <circle cx="585" cy="430" r="20"/><path d="M585 450l18 78m-18-78l-42 40m42-40l48 33m-30 45l38 58m-38-58l-42 52"/>
-          </g>
-          <g transform="translate(360 115)"><circle r="30" fill="#f8c34f"/><g stroke="#f8c34f" stroke-width="6"><path d="M0-50v-28M0 50v28M-50 0h-28M50 0h28M-36-36l-20-20M36 36l20 20M36-36l20-20M-36 36l-20 20"/></g></g>
-        </svg>
-      </div>
-    </section>
-
-    <section id="problema" class="section paper" data-title="Problema">
-      <header class="section-heading"><span>02</span><div><p class="kicker">Abrir el expediente</p><h2>La pregunta que organiza el recorrido</h2></div></header>
-      <div class="question-card">
-        <small>Pregunta de lectura · Documento 01</small>
-        <p>¿Cómo intentó el Consejo Nacional de Educación Física extender la educación corporal desde la escuela hacia otros espacios cotidianos, y qué revela esa expansión sobre el Estado peronista?</p>
-      </div>
-      <aside class="warning"><strong>No busques una historia de éxito lineal.</strong> Los cuadernillos permiten conocer lo que se quiso prescribir. Para comprender qué ocurrió al implementarlo habrá que leer también resistencias, negociaciones y límites.</aside>
-    </section>
-
-    <section id="autor" class="section paper" data-title="Autor">
-      <header class="section-heading"><span>03</span><div><p class="kicker">Lugar de enunciación</p><h2>Quién escribe y desde qué problema</h2></div></header>
-      <div class="author-card">
-        <div><small>Ficha de autor</small><h3>Iván Pablo Orbuch</h3><p>Historia de la educación · Educación Física</p></div>
-        <div><p>Profesor de Historia y doctor en Educación por la Universidad de Buenos Aires. Docente e investigador en la Universidad Nacional de Hurlingham.</p><p>Su texto examina políticas de educación corporal desde la historia de la educación: organismos, proyectos estatales, destinatarios, discursos de legitimación y dificultades de implementación.</p></div>
-      </div>
-      <div class="grid four" id="argumentMap"></div>
-    </section>
-
-    <section id="contexto" class="section paper" data-title="Contexto">
-      <header class="section-heading"><span>04</span><div><p class="kicker">Contexto selectivo</p><h2>Un Estado que busca ampliar su radio de acción</h2></div></header>
-      <ol class="timeline" id="timeline"></ol>
-      <div class="tension">
-        <div><p class="kicker">Advertencia historiográfica</p><h3>El primer peronismo no fue un bloque homogéneo</h3></div>
-        <div class="grid two">
-          <article><strong>Vía militar</strong><p>Dependencia del Ministerio de Guerra, cultura física, preconscripción y organización nacional.</p></article>
-          <article><strong>Vía médico-social</strong><p>Salud pública, medicina social, prevención y prolongación de la vida útil.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section id="lectura" class="section paper" data-title="Lectura">
-      <header class="section-heading"><span>05</span><div><p class="kicker">Lectura orientada</p><h2>Texto, conceptos y preguntas de control</h2></div></header>
-      <div class="grid two">
-        <article class="resource-card"><h3>Texto académico</h3><p>Versión accesible incluida en este repositorio.</p><a class="button" href="contenido/orbuch-texto-accesible.txt">Abrir texto accesible</a></article>
-        <article class="resource-card"><h3>Versión original</h3><p>Enlace transitorio al archivo publicado en el sitio de origen.</p><a class="button secondary" href="https://educar-el-cuerpo.man-ign.chatgpt.site/archivo/orbuch-educar-el-cuerpo.docx" target="_blank" rel="noreferrer">Abrir documento</a></article>
-      </div>
-      <div class="concepts" id="concepts"></div>
-      <form class="quiz" id="quiz"></form>
-    </section>
-
-    <section id="archivo" class="section dark" data-title="Archivo">
-      <header class="section-heading"><span>06</span><div><p class="kicker">Fuentes primarias</p><h2>Dos cuadernillos, dos espacios cotidianos</h2></div></header>
-      <div class="grid two" id="dossiers"></div>
-    </section>
-
-    <section id="interpretacion" class="section dark" data-title="Interpretación">
-      <header class="section-heading"><span>07</span><div><p class="kicker">Actividad integradora</p><h2>De la prescripción a la práctica</h2></div></header>
-      <p>Clasificá cada evidencia según la operación histórica que permite realizar. Podés corregir y volver a intentar.</p>
-      <div id="evidenceActivity" class="evidence-list"></div>
-      <div class="activity-actions"><button class="button primary" id="checkEvidence">Comprobar</button><button class="button ghost" id="resetEvidence">Reiniciar</button></div>
-      <div id="evidenceFeedback" class="feedback" aria-live="polite"></div>
-    </section>
-
-    <section id="cierre" class="section paper" data-title="Cierre">
-      <header class="section-heading"><span>08</span><div><p class="kicker">Conciencia histórica</p><h2>Escribir entre pasado, presente y futuro</h2></div></header>
-      <div class="writing-card">
-        <h3>Producción final</h3>
-        <p>Redactá una interpretación breve que articule: el problema estatal, las dos experiencias, las tensiones entre prescripción e implementación y una pregunta para el presente.</p>
-        <textarea id="finalWriting" rows="12" placeholder="Escribí aquí. El borrador se guarda solamente en este dispositivo."></textarea>
-        <div class="activity-actions"><button class="button" id="downloadWriting">Descargar borrador</button><button class="button ghost" id="clearWriting">Borrar</button></div>
-      </div>
-      <blockquote class="present-question">¿Qué formas actuales de educación corporal intentan atravesar espacios cotidianos y con qué finalidades?</blockquote>
-      <footer><p>Este sitio no solicita datos personales ni envía respuestas. Los borradores se almacenan localmente en el navegador.</p><a href="#inicio">Volver al inicio</a></footer>
-    </section>
-  </main>
-
-  <script src="contenido/contenidos.js"></script>
-  <script src="js/app.js"></script>
+<header class="topbar" id="topbar">
+<div class="progress-copy"><span id="sectionCount">01 / 08</span><strong id="sectionName">Inicio</strong></div>
+<div aria-label="Progreso del recorrido" class="progress-track"><span id="progressBar"></span></div>
+<nav aria-label="Secciones" id="mainNav"></nav>
+</header>
+<main id="app">
+<section class="section hero" data-title="Inicio" id="inicio">
+<div class="hero-copy">
+<p class="strap">Recorrido documental e interactivo</p>
+<p class="period">Argentina · 1946–1950</p>
+<h1><span>Educar el cuerpo</span><span>dentro y fuera</span><span>del aula</span></h1>
+<p class="subtitle">Análisis de dos experiencias en la Nueva Argentina de Perón</p>
+<p class="hero-question">¿Cómo intentó el Estado extender la educación corporal desde la escuela hacia otros espacios cotidianos?</p>
+<p class="hero-intro">Un recorrido para reconstruir cómo una política estatal de educación corporal atravesó el aula y la oficina, y qué tensiones aparecieron al intentar llevarla a la práctica.</p>
+<button class="primary-action" data-go="problema" type="button">
+      Comenzar el recorrido
+      <svg aria-hidden="true" viewbox="0 0 42 20"><path d="M1 10h38M31 2l8 8-8 8"></path></svg>
+</button>
+<p class="use-note"><span>70 min</span><span>Lectura individual o grupal</span><span>Sin registro</span></p>
+</div>
+</section>
+<section class="section paper" data-title="Problema" id="problema">
+<header class="section-heading"><span>02</span><div><p class="kicker">Abrir el expediente</p><h2>La pregunta que organiza el recorrido</h2></div></header>
+<div class="question-card">
+<small>Pregunta de lectura · Documento 01</small>
+<p>¿Cómo intentó el Consejo Nacional de Educación Física extender la educación corporal desde la escuela hacia otros espacios cotidianos, y qué revela esa expansión sobre el Estado peronista?</p>
+</div>
+<aside class="warning"><strong>No busques una historia de éxito lineal.</strong> Los cuadernillos permiten conocer lo que se quiso prescribir. Para comprender qué ocurrió al implementarlo habrá que leer también resistencias, negociaciones y límites.</aside>
+</section>
+<section class="section paper" data-title="Autor" id="autor">
+<header class="section-heading"><span>03</span><div><p class="kicker">Lugar de enunciación</p><h2>Quién escribe y desde qué problema</h2></div></header>
+<div class="author-card">
+<div><small>Ficha de autor</small><h3>Iván Pablo Orbuch</h3><p>Historia de la educación · Educación Física</p></div>
+<div><p>Profesor de Historia y doctor en Educación por la Universidad de Buenos Aires. Docente e investigador en la Universidad Nacional de Hurlingham.</p><p>Su texto examina políticas de educación corporal desde la historia de la educación: organismos, proyectos estatales, destinatarios, discursos de legitimación y dificultades de implementación.</p></div>
+</div>
+<div class="grid four" id="argumentMap"></div>
+</section>
+<section class="section paper" data-title="Contexto" id="contexto">
+<header class="section-heading"><span>04</span><div><p class="kicker">Contexto selectivo</p><h2>Un Estado que busca ampliar su radio de acción</h2></div></header>
+<ol class="timeline" id="timeline"></ol>
+<div class="tension">
+<div><p class="kicker">Advertencia historiográfica</p><h3>El primer peronismo no fue un bloque homogéneo</h3></div>
+<div class="grid two">
+<article><strong>Vía militar</strong><p>Dependencia del Ministerio de Guerra, cultura física, preconscripción y organización nacional.</p></article>
+<article><strong>Vía médico-social</strong><p>Salud pública, medicina social, prevención y prolongación de la vida útil.</p></article>
+</div>
+</div>
+</section>
+<section class="section paper" data-title="Lectura" id="lectura">
+<header class="section-heading"><span>05</span><div><p class="kicker">Lectura orientada</p><h2>Texto, conceptos y preguntas de control</h2></div></header>
+<div class="grid two">
+<article class="resource-card"><h3>Texto académico</h3><p>Versión accesible incluida en este repositorio.</p><a class="button" href="contenido/orbuch-texto-accesible.txt">Abrir texto accesible</a></article>
+<article class="resource-card"><h3>Versión original</h3><p>Enlace transitorio al archivo publicado en el sitio de origen.</p><a class="button secondary" href="https://educar-el-cuerpo.man-ign.chatgpt.site/archivo/orbuch-educar-el-cuerpo.docx" rel="noreferrer" target="_blank">Abrir documento</a></article>
+</div>
+<div class="concepts" id="concepts"></div>
+<form class="quiz" id="quiz"></form>
+</section>
+<section class="section dark" data-title="Archivo" id="archivo">
+<header class="section-heading"><span>06</span><div><p class="kicker">Fuentes primarias</p><h2>Dos cuadernillos, dos espacios cotidianos</h2></div></header>
+<div class="grid two" id="dossiers"></div>
+</section>
+<section class="section dark" data-title="Interpretación" id="interpretacion">
+<header class="section-heading"><span>07</span><div><p class="kicker">Actividad integradora</p><h2>De la prescripción a la práctica</h2></div></header>
+<p>Clasificá cada evidencia según la operación histórica que permite realizar. Podés corregir y volver a intentar.</p>
+<div class="evidence-list" id="evidenceActivity"></div>
+<div class="activity-actions"><button class="button primary" id="checkEvidence">Comprobar</button><button class="button ghost" id="resetEvidence">Reiniciar</button></div>
+<div aria-live="polite" class="feedback" id="evidenceFeedback"></div>
+</section>
+<section class="section paper" data-title="Cierre" id="cierre">
+<header class="section-heading"><span>08</span><div><p class="kicker">Conciencia histórica</p><h2>Escribir entre pasado, presente y futuro</h2></div></header>
+<div class="writing-card">
+<h3>Producción final</h3>
+<p>Redactá una interpretación breve que articule: el problema estatal, las dos experiencias, las tensiones entre prescripción e implementación y una pregunta para el presente.</p>
+<textarea id="finalWriting" placeholder="Escribí aquí. El borrador se guarda solamente en este dispositivo." rows="12"></textarea>
+<div class="activity-actions"><button class="button" id="downloadWriting">Descargar borrador</button><button class="button ghost" id="clearWriting">Borrar</button></div>
+</div>
+<blockquote class="present-question">¿Qué formas actuales de educación corporal intentan atravesar espacios cotidianos y con qué finalidades?</blockquote>
+<footer><p>Este sitio no solicita datos personales ni envía respuestas. Los borradores se almacenan localmente en el navegador.</p><a href="#inicio">Volver al inicio</a></footer>
+</section>
+</main>
+<script src="contenido/contenidos.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
