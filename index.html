@@ -11,6 +11,7 @@
 <link href="css/problem-author.css" rel="stylesheet"/>
 <link href="css/context.css" rel="stylesheet"/>
 <link href="css/context-timeline-fix.css" rel="stylesheet"/>
+<link href="css/reading.css" rel="stylesheet"/>
 </head>
 <body>
 <header class="topbar" id="topbar">
@@ -119,14 +120,83 @@
 </section>
 
 <section class="section paper" data-title="Lectura" id="lectura">
-<header class="section-heading"><span>05</span><div><p class="kicker">Lectura orientada</p><h2>Texto, conceptos y preguntas de control</h2></div></header>
-<div class="grid two">
-<article class="resource-card"><h3>Texto académico</h3><p>Versión accesible incluida en este repositorio.</p><a class="button" href="contenido/orbuch-texto-accesible.txt">Abrir texto accesible</a></article>
-<article class="resource-card"><h3>Versión original</h3><p>Enlace transitorio al archivo publicado en el sitio de origen.</p><a class="button secondary" href="https://educar-el-cuerpo.man-ign.chatgpt.site/archivo/orbuch-educar-el-cuerpo.docx" rel="noreferrer" target="_blank">Abrir documento</a></article>
+<header class="section-heading"><span>05</span><div><p class="kicker">Lectura orientada</p><h2>Leer, escuchar y construir herramientas para interpretar</h2></div></header>
+<div class="reading-intro">
+<article class="reading-contract">
+<p class="mini-label">Contrato de lectura</p>
+<h3>Dos formatos abiertos al mismo tiempo, una única pregunta histórica</h3>
+<p>Podés recorrer la síntesis accesible, consultar el artículo académico en PDF y activar la lectura asistida por voz. Cambiar de vista no detiene la escucha: el propósito es que texto y sonido funcionen juntos o por separado.</p>
+<div class="reading-tracks">
+<article><span>01</span><h4>Seguir la tesis</h4><p>Continuidad de organismos, ruptura de escala y voluntad de alcance nacional.</p></article>
+<article><span>02</span><h4>Comparar experiencias</h4><p>Destinatarios, tiempos, intermediarios, argumentos y espacios de aplicación.</p></article>
+<article><span>03</span><h4>Buscar tensiones</h4><p>Indicios de adhesión, resistencia, negociación y dificultad de implementación.</p></article>
 </div>
+</article>
+<aside class="reading-focus">
+<p class="mini-label">Mientras leés</p>
+<h3>Marcá cuatro tipos de evidencia</h3>
+<ul>
+<li>Qué problemas diagnostican las fuentes.</li>
+<li>Qué hábitos y conductas buscan producir.</li>
+<li>Quiénes deben implementar las propuestas.</li>
+<li>Qué lenguaje permite inferir resistencias o límites.</li>
+</ul>
+</aside>
+</div>
+
+<div class="reading-studio">
+<div class="reading-document">
+<div class="reading-toolbar">
+<div class="reading-tabs" role="tablist" aria-label="Formatos de lectura">
+<button type="button" role="tab" aria-selected="true" data-reading-tab="text">Texto accesible</button>
+<button type="button" role="tab" aria-selected="false" data-reading-tab="pdf">Artículo en PDF</button>
+</div>
+<div class="reading-links">
+<a href="contenido/orbuch-texto-accesible.txt" target="_blank">Abrir texto aparte</a>
+<a href="https://drive.google.com/file/d/1FBuKyLb0YK23Mbw_kfwkNGCJTb4PouYV/view" target="_blank" rel="noreferrer">Abrir PDF aparte</a>
+</div>
+</div>
+<div class="reading-panel" data-reading-panel="text">
+<article class="reading-text" id="readingText" aria-live="polite"><p class="reading-loading">Cargando la síntesis accesible…</p></article>
+</div>
+<div class="reading-panel" data-reading-panel="pdf" hidden>
+<iframe class="pdf-reader" id="articlePdf" title="Artículo académico de Iván Orbuch" data-src="https://drive.google.com/file/d/1FBuKyLb0YK23Mbw_kfwkNGCJTb4PouYV/preview" loading="lazy"></iframe>
+</div>
+</div>
+<aside class="listening-console" aria-label="Escucha asistida">
+<header class="listening-header">
+<p class="mini-label">Escucha asistida</p>
+<h3>Leer con la voz del navegador</h3>
+<p>La voz continúa mientras consultás el PDF o el texto. La disponibilidad y el timbre dependen del navegador y del dispositivo.</p>
+</header>
+<div class="listening-body">
+<label for="voiceChapter">Fragmento</label>
+<select id="voiceChapter" disabled><option>Cargando capítulos…</option></select>
+<div class="voice-row">
+<div><label for="voiceSpeed">Velocidad</label><input id="voiceSpeed" type="range" min="0.7" max="1.4" step="0.1" value="1"/></div>
+<output class="voice-speed-output" id="voiceSpeedOutput" for="voiceSpeed">1.0×</output>
+</div>
+<div class="player-actions">
+<button id="voicePlay" type="button" disabled>Escuchar</button>
+<button class="secondary" id="voiceStop" type="button" disabled>Detener</button>
+</div>
+<p class="listening-status" id="voiceStatus" aria-live="polite">Preparando la lectura…</p>
+<p class="audio-migration-note"><strong>Nota técnica:</strong> esta versión utiliza lectura por voz como respaldo autónomo. El archivo de audiolibro grabado podrá reemplazarla sin modificar la estructura del módulo cuando se complete su migración.</p>
+</div>
+</aside>
+</div>
+
+<div class="concept-toolbox">
+<header class="concept-heading"><p class="mini-label">Caja de herramientas</p><h3>Cuatro conceptos para no perder el argumento</h3></header>
 <div class="concepts" id="concepts"></div>
+</div>
+
+<div class="reading-check">
+<header class="quiz-heading"><p class="mini-label">Primera comprobación</p><h3>Antes de entrar al archivo documental</h3></header>
 <form class="quiz" id="quiz"></form>
+</div>
 </section>
+
 <section class="section dark" data-title="Archivo" id="archivo">
 <header class="section-heading"><span>06</span><div><p class="kicker">Fuentes primarias</p><h2>Dos cuadernillos, dos espacios cotidianos</h2></div></header>
 <div class="grid two" id="dossiers"></div>
@@ -153,6 +223,7 @@
 <script src="contenido/contenidos.js"></script>
 <script src="js/app.js"></script>
 <script src="js/context.js"></script>
+<script src="js/reading.js"></script>
 <script src="js/navigation.js"></script>
 </body>
 </html>
